@@ -2,18 +2,18 @@
 import 'package:flutter/material.dart';
 
 class HomePageTemp extends StatelessWidget {
-  final options = [
-    'Uno',
-    'Dos',
-    'Tres',
-    'Cuatro',
-    'Cinco',
-    'Seis',
-    'Siete',
-    'Ocho',
-    'Nueve',
-    'Diez'
-  ];
+  final options = {
+    'Uno': "Opcion 1",
+    'Dos': "Opcion 2",
+    'Tres': "Opcion 3",
+    'Cuatro': "Opcion 4",
+    'Cinco': "Opcion 5",
+    'Seis': "Opcion 6",
+    'Siete': "Opcion 7",
+    'Ocho': "Opcion 8",
+    'Nueve': "Opcion 9",
+    'Diez': "Opcion 10"
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,14 @@ class HomePageTemp extends StatelessWidget {
   List<Widget> _createItems() {
     List<Widget> myList = <Widget>[];
 
-    for (String opt in options) {
-      final tempWidget = ListTile(title: Text('$opt'));
+    for (final opt in options.entries) {
+      final key = opt.key;
+      final value = opt.value;
+      final tempWidget = ListTile(
+        title: Text(key),
+        subtitle: Text(value),
+        trailing: Icon(Icons.keyboard_arrow_right),
+      );
       myList
         ..add(tempWidget)
         ..add(Divider(
