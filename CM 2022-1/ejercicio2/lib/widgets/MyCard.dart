@@ -1,11 +1,10 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, prefer_const_constructors
 
 import 'package:ejercicio2/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyCard extends StatelessWidget {
   final String title;
-  final String subtitle;
   final String image;
   final int price;
   final String description;
@@ -14,7 +13,6 @@ class MyCard extends StatelessWidget {
   const MyCard({
     Key? key,
     required this.title,
-    required this.subtitle,
     required this.image,
     required this.price,
     required this.description,
@@ -26,40 +24,45 @@ class MyCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        margin: EdgeInsets.only(left: 20),
-        height: 400,
-        width: 270,
+        margin: EdgeInsets.only(top: 10, left: 15),
+        height: 175,
+        width: 350,
         child: Stack(
           children: [
             Positioned(
               right: 0,
               bottom: 0,
               child: Container(
-                height: 380,
-                width: 250,
+                height: 150,
+                width: 350,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(34),
-                    color: kPrimaryColor.withOpacity(0.06)),
+                  borderRadius: BorderRadius.circular(34),
+                  color: kBlendingGreen.withOpacity(0.2),
+                ),
               ),
             ),
-            Container(
-              height: 181,
-              width: 181,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kPrimaryColor.withOpacity(0.15)),
+            Positioned(
+              left: 20,
+              child: Container(
+                height: 130,
+                width: 130,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: kPrimaryColor.withOpacity(0.3)),
+              ),
             ),
             Positioned(
-              top: 10,
-              left: 15,
+              top: 4,
+              left: 22,
               child: Container(
-                height: 151,
-                width: 151,
+                height: 125,
+                width: 125,
                 decoration: BoxDecoration(
+                    shape: BoxShape.circle,
                     image: DecorationImage(
-                  image: AssetImage(image),
-                  fit: BoxFit.fill,
-                )),
+                      image: AssetImage(image),
+                      fit: BoxFit.fitWidth,
+                    )),
               ),
             ),
             Positioned(
@@ -82,15 +85,11 @@ class MyCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(title, style: Theme.of(context).textTheme.headline6),
-                      Text(
-                        subtitle,
-                        style: TextStyle(color: kTextColor.withOpacity(0.4)),
-                      ),
                       SizedBox(height: 15),
                       Text(
                         description,
                         maxLines: 5,
-                        style: TextStyle(color: kTextColor.withOpacity(0.7)),
+                        style: TextStyle(color: kTextColor),
                       )
                     ],
                   ),
